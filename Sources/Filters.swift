@@ -107,9 +107,9 @@ func indent(_ content: String, indentation: String, indentFirst: Bool) -> String
   guard !indentation.isEmpty else { return content }
 
   var lines = content.components(separatedBy: .newlines)
-  let firstLine = (indentFirst ? indentation : "") + lines.removeFirst()
-  let result = lines.reduce(into: [firstLine]) { result, line in
-    result.append(line.isEmpty ? "" : "\(indentation)\(line)")
+  let firstLine = "\(indentFirst ? indentation : "")\(lines.removeFirst())"
+  let result = lines.reduce([firstLine]) { result, line in
+    result + [(line.isEmpty ? "" : "\(indentation)\(line)")]
   }
   return result.joined(separator: "\n")
 }

@@ -1,5 +1,4 @@
 import Foundation
-import PathKit
 
 public protocol Loader {
   func loadTemplate(name: String, environment: Environment) throws -> Template
